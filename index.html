@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>চিচিঙ্গা চাষ — হিসাবপত্র</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background: #eef6ee;
+    color: #1a2e1a;
+    min-height: 100vh;
+    padding: 32px 16px;
+  }
+
+  .card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 48px rgba(20,70,20,0.14);
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #1a5c28 0%, #2a8a40 60%, #3db356 100%);
+    padding: 36px 32px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-bg-icon {
+    position: absolute;
+    right: 24px; top: 16px;
+    opacity: 0.10;
+    width: 110px; height: 110px;
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9de0ac;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .header-sub {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #c0eccc;
+  }
+  .partners {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .partner-tag {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    color: #fff;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .partner-tag svg { flex-shrink: 0; }
+
+  /* BODY */
+  .body { padding: 28px 32px 36px; }
+
+  /* SECTION TITLE */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #2a8a40;
+    font-weight: 700;
+    margin-bottom: 14px;
+    margin-top: 30px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e4f4e8;
+  }
+  .section-title:first-child { margin-top: 0; }
+  .section-title svg { flex-shrink: 0; }
+
+  /* INFO GRID */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .info-box {
+    background: #f3fbf5;
+    border: 1px solid #cfe8d5;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .info-box-icon {
+    width: 32px; height: 32px;
+    background: #dff2e4;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .info-box-icon svg { color: #1e6b2e; }
+  .info-box .label {
+    font-size: 11px;
+    color: #5a8a62;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+  .info-box .value {
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a4f22;
+    line-height: 1.2;
+  }
+  .info-box .unit {
+    font-size: 12px;
+    font-weight: 400;
+    color: #5a8a62;
+    margin-left: 3px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin: 6px 0 4px;
+  }
+  .tl-step { flex: 1; text-align: center; }
+  .tl-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #2a8a40;
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 7px;
+  }
+  .tl-label { font-size: 12px; color: #3a6e42; font-weight: 500; line-height: 1.4; }
+  .tl-line { width: 30px; height: 2px; background: #b0d8ba; flex-shrink: 0; margin-top: 18px; }
+
+  /* EXPENSE BLOCKS */
+  .expense-block {
+    background: #f8fdf9;
+    border: 1px solid #d6ebda;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .expense-block-title {
+    background: #e4f4e8;
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a5c28;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .expense-block-title svg { color: #2a8a40; }
+  .expense-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 16px;
+    border-top: 1px solid #edf7ef;
+    font-size: 14px;
+  }
+  .expense-row .item { color: #2c4a2f; }
+  .expense-row .amt { font-weight: 600; color: #b83030; white-space: nowrap; }
+  .subtotal-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 9px 16px;
+    background: #dff2e4;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a4f22;
+    border-top: 1px solid #bddec5;
+  }
+
+  /* REFERENCE NOTE */
+  .ref-note {
+    background: #fef9ec;
+    border-left: 4px solid #d4a017;
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #5a3e00;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  .ref-note svg { flex-shrink: 0; margin-top: 2px; color: #d4a017; }
+
+  /* GRAND TOTAL */
+  .grand-total {
+    background: linear-gradient(90deg, #1a5c28, #2a8a40);
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+  .grand-total .gt-label { color: #b0e8bc; font-size: 13px; font-weight: 600; }
+  .grand-total .gt-val { color: #fff; font-size: 26px; font-weight: 700; }
+  .grand-total .gt-range { color: #90d8a0; font-size: 12px; margin-top: 2px; }
+
+  /* REVENUE TABLE */
+  .rev-table { width: 100%; border-collapse: collapse; }
+  .rev-table th {
+    background: #1a5c28;
+    color: #b0e8bc;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    letter-spacing: 0.4px;
+  }
+  .rev-table td {
+    padding: 11px 14px;
+    font-size: 14px;
+    border-bottom: 1px solid #e4f4e8;
+  }
+  .rev-table tr:last-child td { border-bottom: none; }
+  .rev-table tr:nth-child(even) td { background: #f3fbf5; }
+  .rev-table .price-col { font-weight: 600; color: #2c5a35; }
+  .rev-table .revenue-col { font-weight: 700; color: #1a6b2a; }
+  .rev-table .profit-col { font-weight: 700; color: #14862e; }
+
+  /* SCENARIO CARDS */
+  .scenario-card {
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .sc-header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sc-badge {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .sc-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .sc-total-box {
+    border-radius: 12px;
+    padding: 8px 18px;
+    text-align: center;
+    background: rgba(255,255,255,0.17);
+  }
+  .sc-total-label { font-size: 11px; opacity: 0.85; color: #fff; }
+  .sc-total-val { font-size: 22px; font-weight: 700; color: #fff; }
+  .sc-body { padding: 16px 20px; }
+  .sc-chips {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    margin-bottom: 13px;
+  }
+  .sc-chip {
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 8px;
+  }
+  .sc-chip-label { font-size: 10px; font-weight: 600; margin-bottom: 4px; }
+  .sc-chip-val { font-size: 14px; font-weight: 700; }
+  .sc-formula {
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sc-formula svg { flex-shrink: 0; }
+  .sc-note {
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .sc-note svg { flex-shrink: 0; margin-top: 1px; }
+
+  /* FOOTER */
+  .footer {
+    background: #f0f8f2;
+    border-top: 1px solid #cfe8d5;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #6a9e72;
+  }
+  .footer strong { color: #2a8a40; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- ══ HEADER ══ -->
+  <div class="header">
+    <!-- BG leaf icon -->
+    <svg class="header-bg-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-14 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="header-eyebrow">চাষের হিসাবপত্র · ২০২৫</div>
+    <h1>চিচিঙ্গা চাষ প্রকল্প</h1>
+    <div class="header-sub">বীজ থেকে ফলন পর্যন্ত সম্পূর্ণ বিবরণ</div>
+    <div class="partners">
+      <div class="partner-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        রাব্বি — কাজ
+      </div>
+      <div class="partner-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        লামিম ভাই — বিনিয়োগ
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ══ চাষের মূল তথ্য ══ -->
+    <div class="section-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-14 2"/></svg>
+      চাষের মূল তথ্য
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="info-box-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e6b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <div><div class="label">মোট চারা</div><div class="value">১৪০<span class="unit">টি</span></div></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e6b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div><div class="label">বীজ (৪ প্যাকেট)</div><div class="value">১৮০<span class="unit">টি</span></div></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e6b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div><div class="label">ফলন শুরু</div><div class="value">২.৫<span class="unit">মাস পর</span></div></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e6b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div><div class="label">ফলন মৌসুম</div><div class="value">৬০<span class="unit">দিন</span></div></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e6b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div><div class="label">মোট সংগ্রহ (মিনিমাম)</div><div class="value">৩০<span class="unit">বার</span></div></div>
+      </div>
+      <div class="info-box">
+        <div class="info-box-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1e6b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </div>
+        <div><div class="label">সংগ্রহ ব্যবধান</div><div class="value">১<span class="unit">দিন পরপর</span></div></div>
+      </div>
+    </div>
+
+    <!-- ══ সময়রেখা ══ -->
+    <div class="section-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      সময়রেখা
+    </div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-dot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <div class="tl-label">বীজ ও<br>চারা তৈরি</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-step">
+        <div class="tl-dot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="tl-label">মাঠে<br>রোপণ</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-step">
+        <div class="tl-dot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="tl-label">২.৫ মাস<br>বৃদ্ধি</div>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-step">
+        <div class="tl-dot">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="tl-label">৬০ দিন<br>ফলন</div>
+      </div>
+    </div>
+
+    <!-- ══ রেফারেন্স ══ -->
+    <div class="section-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      তুলনামূলক রেফারেন্স
+    </div>
+    <div class="ref-note">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <div><strong>আলমগির ভাইয়ের উদাহরণ:</strong> মাত্র ৮৮টি গাছ থেকে একদিন পরপর ৫০ কেজি করে তুলছেন। আমাদের <strong>১৪০টি গাছ</strong> — তাই ৫০ কেজি একদম মিনিমাম ধরা হয়েছে। ভালো পরিচর্যায় প্রতিদিনও তোলা সম্ভব।</div>
+    </div>
+
+    <!-- ══ এখন পর্যন্ত খরচ ══ -->
+    <div class="section-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      এখন পর্যন্ত মোট খরচ
+    </div>
+
+    <!-- বীজ -->
+    <div class="expense-block">
+      <div class="expense-block-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2-14 2"/></svg>
+        বীজ
+      </div>
+      <div class="expense-row"><span class="item">আশা-২ হাইব্রিড (২ প্যাকেট)</span><span class="amt">৫৫০ ৳</span></div>
+      <div class="expense-row"><span class="item">আশা (১ প্যাকেট)</span><span class="amt">২৫০ ৳</span></div>
+      <div class="expense-row"><span class="item">পদ্মা (১ প্যাকেট)</span><span class="amt">২৫০ ৳</span></div>
+      <div class="subtotal-row"><span>বীজ উপমোট</span><span>১,০৫০ ৳</span></div>
+    </div>
+
+    <!-- ওষুধ -->
+    <div class="expense-block">
+      <div class="expense-block-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H20a2 2 0 0 1 2 2v3"/><circle cx="18" cy="18" r="4"/><path d="M18 16v4"/><path d="M16 18h4"/></svg>
+        ওষুধ
+      </div>
+      <div class="expense-row"><span class="item">ইন্দোফিল এম-৪৫</span><span class="amt">১২০ ৳</span></div>
+      <div class="expense-row"><span class="item">লারকোনিল</span><span class="amt">৯০ ৳</span></div>
+      <div class="expense-row"><span class="item">টাফগর ৪০ ইসি</span><span class="amt">১০০ ৳</span></div>
+      <div class="subtotal-row"><span>ওষুধ উপমোট</span><span>৩১০ ৳</span></div>
+    </div>
+
+    <!-- মাছিপোকা ট্র্যাপ -->
+    <div class="expense-block">
+      <div class="expense-block-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        মাছিপোকা ট্র্যাপ
+      </div>
+      <div class="expense-row"><span class="item">প্যারামন ট্র্যাপ (১ প্যাকেট)</span><span class="amt">৬০ ৳</span></div>
+      <div class="expense-row"><span class="item">ডিব্বা (২টি)</span><span class="amt">১১০ ৳</span></div>
+      <div class="subtotal-row"><span>ট্র্যাপ উপমোট</span><span>১৭০ ৳</span></div>
+    </div>
+
+    <!-- অন্যান্য -->
+    <div class="expense-block">
+      <div class="expense-block-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        অন্যান্য
+      </div>
+      <div class="expense-row"><span class="item">স্পেয়ার (২টি)</span><span class="amt">৮০ ৳</span></div>
+      <div class="expense-row"><span class="item">গাড়ি ভাড়া (২ দিন)</span><span class="amt">১০০ ৳</span></div>
+      <div class="expense-row"><span class="item">পলিব্যাগ (বীজ লাগানোর)</span><span class="amt">১৩০ ৳</span></div>
+      <div class="expense-row"><span class="item">কোকোপিট</span><span class="amt">১৪০ ৳</span></div>
+      <div class="expense-row"><span class="item">সার</span><span class="amt">২২০ ৳</span></div>
+      <div class="expense-row"><span class="item">ব্যক্তিগত খরচ (রাব্বি)</span><span class="amt">৩০০ ৳</span></div>
+      <div class="subtotal-row"><span>অন্যান্য উপমোট</span><span>৯৭০ ৳</span></div>
+    </div>
+
+    <div class="grand-total">
+      <div>
+        <div class="gt-label">এখন পর্যন্ত মোট খরচ</div>
+        <div class="gt-range">বীজ + ওষুধ + ট্র্যাপ + অন্যান্য</div>
+      </div>
+      <div class="gt-val">২,৫০০ ৳</div>
+    </div>
+
+    <!-- ══ আসন্ন খরচ ══ -->
+    <div class="section-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+      আসন্ন খরচ (প্রাক্কলিত)
+    </div>
+
+    <div class="expense-block">
+      <div class="expense-block-title">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        পরবর্তী ধাপের খরচ
+      </div>
+      <div class="expense-row"><span class="item">ওষুধ — এখন পর্যন্ত আনা হয়েছে</span><span class="amt">২০০ ৳</span></div>
+      <div class="expense-row"><span class="item">ওষুধ — বাকি লাগবে (লিস্ট অনুযায়ী)</span><span class="amt">~১,৩০০ ৳</span></div>
+      <div class="expense-row"><span class="item">কোকোপিট (৪ প্যাকেট × ৭০৳)</span><span class="amt">২৮০ ৳</span></div>
+      <div class="expense-row"><span class="item">সার (পরবর্তী ধাপ)</span><span class="amt">২২০ ৳</span></div>
+      <div class="expense-row"><span class="item">বৃদ্ধি ও ফুল পর্যায়ে সার (পরে লাগতে পারে)</span><span class="amt">~৬০০–৭০০ ৳</span></div>
+      <div class="subtotal-row"><span>আসন্ন খরচ (আনুমানিক)</span><span>~২,৬০০–২,৭০০ ৳</span></div>
+    </div>
+
+    <div class="grand-total">
+      <div>
+        <div class="gt-label">সম্পূর্ণ প্রকল্পের মোট খরচ</div>
+        <div class="gt-range">এখন পর্যন্ত + ভবিষ্যৎ</div>
+      </div>
+      <div class="gt-val">~৫,১০০–৫,২০০ ৳</div>
+    </div>
+
+    <!-- ══ উৎপাদন সিনারিও ══ -->
+    <div class="section-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      উৎপাদন সিনারিও ও সম্ভাব্য লাভ
+    </div>
+
+    <!-- ── সিনারিও ১ ── -->
+    <div class="scenario-card" style="border:2px solid #2a8a40;">
+      <div class="sc-header" style="background:linear-gradient(90deg,#1a5c28,#2a8a40);">
+        <div>
+          <div class="sc-badge" style="color:#9de0ac;">সিনারিও ১</div>
+          <div class="sc-title">মিনিমাম — সর্বনিম্ন হিসাব</div>
+        </div>
+        <div class="sc-total-box">
+          <div class="sc-total-label">মোট উৎপাদন</div>
+          <div class="sc-total-val">১,৫০০ কেজি</div>
+        </div>
+      </div>
+      <div class="sc-body" style="background:#f0faf2;">
+        <div class="sc-chips">
+          <div class="sc-chip" style="border:1px solid #c0e0c8;">
+            <div class="sc-chip-label" style="color:#3a6e42;">সংগ্রহের ধরন</div>
+            <div class="sc-chip-val" style="color:#1a4f22;">একদিন পরপর</div>
+          </div>
+          <div class="sc-chip" style="border:1px solid #c0e0c8;">
+            <div class="sc-chip-label" style="color:#3a6e42;">প্রতিবার ফলন</div>
+            <div class="sc-chip-val" style="color:#1a4f22;">৫০ কেজি</div>
+          </div>
+          <div class="sc-chip" style="border:1px solid #c0e0c8;">
+            <div class="sc-chip-label" style="color:#3a6e42;">মোট সংগ্রহ</div>
+            <div class="sc-chip-val" style="color:#1a4f22;">৩০ বার</div>
+          </div>
+        </div>
+        <div class="sc-formula" style="background:#d8f0de; color:#1e5c28;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          হিসাব: ৫০ কেজি &times; ৩০ বার = <strong>&nbsp;১,৫০০ কেজি</strong> মোট উৎপাদন
+        </div>
+        <div style="border-radius:10px; overflow:hidden; border:1px solid #b8dcc0;">
+          <table class="rev-table">
+            <thead><tr>
+              <th>বাজার দর</th>
+              <th>মোট বিক্রয়</th>
+              <th>নিট লাভ (খরচ ~৫,২০০৳)</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="price-col">২০ ৳/কেজি</td><td class="revenue-col">৩০,০০০ ৳</td><td class="profit-col">~২৪,৮০০ ৳</td></tr>
+              <tr><td class="price-col">৩০ ৳/কেজি</td><td class="revenue-col">৪৫,০০০ ৳</td><td class="profit-col">~৩৯,৮০০ ৳</td></tr>
+              <tr><td class="price-col">৫০ ৳/কেজি</td><td class="revenue-col">৭৫,০০০ ৳</td><td class="profit-col">~৬৯,৮০০ ৳</td></tr>
+              <tr><td class="price-col">৮০ ৳/কেজি</td><td class="revenue-col">১,২০,০০০ ৳</td><td class="profit-col">~১,১৪,৮০০ ৳</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── সিনারিও ২ ── -->
+    <div class="scenario-card" style="border:2px solid #c49010;">
+      <div class="sc-header" style="background:linear-gradient(90deg,#a06800,#d4a017);">
+        <div>
+          <div class="sc-badge" style="color:#ffe8a0;">সিনারিও ২</div>
+          <div class="sc-title" style="display:flex; align-items:center; gap:8px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            টার্গেট — আমাদের লক্ষ্য
+          </div>
+        </div>
+        <div class="sc-total-box">
+          <div class="sc-total-label">মোট উৎপাদন</div>
+          <div class="sc-total-val">২,৪০০ কেজি</div>
+        </div>
+      </div>
+      <div class="sc-body" style="background:#fffbf0;">
+        <div class="sc-note" style="background:#fef3c7; border-left:4px solid #d4a017; color:#5a3e00; border-radius:0 8px 8px 0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d4a017" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div><strong>এটি আমাদের টার্গেট।</strong> ভালো পরিচর্যা ও নিয়মিত সংগ্রহ করলে গ্যাপ ছাড়া প্রতিদিন তোলা সম্ভব — ৬০ দিনে ৬০ বার।</div>
+        </div>
+        <div class="sc-chips">
+          <div class="sc-chip" style="border:1px solid #e8d090;">
+            <div class="sc-chip-label" style="color:#7a5800;">সংগ্রহের ধরন</div>
+            <div class="sc-chip-val" style="color:#4a3200;">প্রতিদিন</div>
+          </div>
+          <div class="sc-chip" style="border:1px solid #e8d090;">
+            <div class="sc-chip-label" style="color:#7a5800;">প্রতিদিন ফলন</div>
+            <div class="sc-chip-val" style="color:#4a3200;">৪০ কেজি</div>
+          </div>
+          <div class="sc-chip" style="border:1px solid #e8d090;">
+            <div class="sc-chip-label" style="color:#7a5800;">মোট সংগ্রহ</div>
+            <div class="sc-chip-val" style="color:#4a3200;">৬০ বার</div>
+          </div>
+        </div>
+        <div class="sc-formula" style="background:#fde88a; color:#4a3200;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+          হিসাব: ৪০ কেজি &times; ৬০ বার = <strong>&nbsp;২,৪০০ কেজি</strong> মোট উৎপাদন
+        </div>
+        <div style="border-radius:10px; overflow:hidden; border:1px solid #e0c870;">
+          <table class="rev-table">
+            <thead>
+              <tr style="background:linear-gradient(90deg,#a06800,#d4a017);">
+                <th>বাজার দর</th>
+                <th>মোট বিক্রয়</th>
+                <th>নিট লাভ (খরচ ~৫,২০০৳)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="price-col">২০ ৳/কেজি</td><td class="revenue-col">৪৮,০০০ ৳</td><td class="profit-col">~৪২,৮০০ ৳</td></tr>
+              <tr><td class="price-col">৩০ ৳/কেজি</td><td class="revenue-col">৭২,০০০ ৳</td><td class="profit-col">~৬৬,৮০০ ৳</td></tr>
+              <tr><td class="price-col">৫০ ৳/কেজি</td><td class="revenue-col">১,২০,০০০ ৳</td><td class="profit-col">~১,১৪,৮০০ ৳</td></tr>
+              <tr><td class="price-col">৮০ ৳/কেজি</td><td class="revenue-col">১,৯২,০০০ ৳</td><td class="profit-col">~১,৮৬,৮০০ ৳</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    প্রস্তুত করেছেন: <strong>রাব্বি</strong> &nbsp;·&nbsp;
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+    বিনিয়োগকারী: <strong>লামিম ভাই</strong> &nbsp;·&nbsp; চিচিঙ্গা চাষ প্রকল্প ২০২৫
+  </div>
+
+</div>
+</body>
+</html>
