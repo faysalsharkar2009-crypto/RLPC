@@ -358,7 +358,7 @@
       </div>
       <div class="partner-tag">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        লামিম ভাই — বিনিয়োগ
+        লামিম — বিনিয়োগ
       </div>
     </div>
   </div>
@@ -505,10 +505,12 @@
       <div class="expense-row"><span class="item">স্পেয়ার (২টি)</span><span class="amt">৮০ ৳</span></div>
       <div class="expense-row"><span class="item">গাড়ি ভাড়া (২ দিন)</span><span class="amt">১০০ ৳</span></div>
       <div class="expense-row"><span class="item">পলিব্যাগ (বীজ লাগানোর)</span><span class="amt">১৩০ ৳</span></div>
-      <div class="expense-row"><span class="item">কোকোপিট</span><span class="amt">১৪০ ৳</span></div>
+      <div class="expense-row"><span class="item">কোকোপিট (প্রথম ব্যাচ)</span><span class="amt">১৪০ ৳</span></div>
+      <div class="expense-row"><span class="item">লাউ</span><span class="amt">৪০ ৳</span></div>
+      <div class="expense-row"><span class="item">কোকোপিট ৪ কেজি (আজকে)</span><span class="amt">১৪০ ৳</span></div>
       <div class="expense-row"><span class="item">সার</span><span class="amt">২২০ ৳</span></div>
       <div class="expense-row"><span class="item">ব্যক্তিগত খরচ (রাব্বি)</span><span class="amt">৩০০ ৳</span></div>
-      <div class="subtotal-row"><span>অন্যান্য উপমোট</span><span>৯৭০ ৳</span></div>
+      <div class="subtotal-row"><span>অন্যান্য উপমোট</span><span>১,১৫০ ৳</span></div>
     </div>
 
     <div class="grand-total">
@@ -516,7 +518,7 @@
         <div class="gt-label">এখন পর্যন্ত মোট খরচ</div>
         <div class="gt-range">বীজ + ওষুধ + ট্র্যাপ + অন্যান্য</div>
       </div>
-      <div class="gt-val">২,৫০০ ৳</div>
+      <div class="gt-val">২,৬৮০ ৳</div>
     </div>
 
     <!-- ══ আসন্ন খরচ ══ -->
@@ -532,18 +534,56 @@
       </div>
       <div class="expense-row"><span class="item">ওষুধ — এখন পর্যন্ত আনা হয়েছে</span><span class="amt">২০০ ৳</span></div>
       <div class="expense-row"><span class="item">ওষুধ — বাকি লাগবে (লিস্ট অনুযায়ী)</span><span class="amt">~১,৩০০ ৳</span></div>
-      <div class="expense-row"><span class="item">কোকোপিট (৪ প্যাকেট × ৭০৳)</span><span class="amt">২৮০ ৳</span></div>
       <div class="expense-row"><span class="item">সার (পরবর্তী ধাপ)</span><span class="amt">২২০ ৳</span></div>
       <div class="expense-row"><span class="item">বৃদ্ধি ও ফুল পর্যায়ে সার (পরে লাগতে পারে)</span><span class="amt">~৬০০–৭০০ ৳</span></div>
-      <div class="subtotal-row"><span>আসন্ন খরচ (আনুমানিক)</span><span>~২,৬০০–২,৭০০ ৳</span></div>
+      <div class="subtotal-row"><span>আসন্ন খরচ (আনুমানিক)</span><span>~২,৩০০–২,৪০০ ৳</span></div>
     </div>
 
     <div class="grand-total">
       <div>
-        <div class="gt-label">সম্পূর্ণ প্রকল্পের মোট খরচ</div>
+        <div class="gt-label">সম্পূর্ণ প্রকল্পের মোট বাজেট</div>
         <div class="gt-range">এখন পর্যন্ত + ভবিষ্যৎ</div>
       </div>
-      <div class="gt-val">~৫,১০০–৫,২০০ ৳</div>
+      <div class="gt-val">~৫,২০০ ৳</div>
+    </div>
+
+    <!-- ══ বাজেট ট্র্যাকার ══ -->
+    <div class="section-title" style="margin-top:28px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      বাজেট ট্র্যাকার
+    </div>
+
+    <div style="background:#f8fdf9; border:1px solid #cfe8d5; border-radius:14px; overflow:hidden;">
+      <!-- rows -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:13px 18px; border-bottom:1px solid #e4f4e8;">
+        <div style="display:flex; align-items:center; gap:9px; font-size:14px; color:#2c4a2f;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2a8a40" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          মোট বাজেট (প্রকল্প)
+        </div>
+        <span style="font-weight:700; color:#1a4f22; font-size:15px;">৫,২০০ ৳</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:13px 18px; border-bottom:1px solid #e4f4e8; background:#fff;">
+        <div style="display:flex; align-items:center; gap:9px; font-size:14px; color:#2c4a2f;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          এখন পর্যন্ত খরচ হয়েছে
+        </div>
+        <span style="font-weight:700; color:#c0392b; font-size:15px;">২,৬৮০ ৳</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:13px 18px; border-bottom:1px solid #e4f4e8;">
+        <div style="display:flex; align-items:center; gap:9px; font-size:14px; color:#2c4a2f;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1e6b2e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          হাতে আছে (লামিম ভাই)
+        </div>
+        <span style="font-weight:700; color:#1a6b2a; font-size:15px;">৮৬০ ৳</span>
+      </div>
+      <!-- final row — how much more needed -->
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:15px 18px; background:linear-gradient(90deg,#fff8e8,#fef3c7);">
+        <div style="display:flex; align-items:center; gap:9px; font-size:14px; font-weight:600; color:#6b4200;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#d4a017" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          আরো লাগবে (৫,২০০ - ২,৬৮০ - ৮৬০)
+        </div>
+        <span style="font-weight:700; color:#b8580a; font-size:18px;">১,৬৬০ ৳</span>
+      </div>
     </div>
 
     <!-- ══ উৎপাদন সিনারিও ══ -->
@@ -666,9 +706,9 @@
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
     প্রস্তুত করেছেন: <strong>রাব্বি</strong> &nbsp;·&nbsp;
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-    বিনিয়োগকারী: <strong>লামিম ভাই</strong> &nbsp;·&nbsp; চিচিঙ্গা চাষ প্রকল্প ২০২৫
+    বিনিয়োগকারী: <strong>লামিম</strong> &nbsp;·&nbsp; চিচিঙ্গা চাষ প্রকল্প ২০২৫
   </div>
 
 </div>
 </body>
-</html>
+  </html>
